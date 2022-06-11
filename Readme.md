@@ -1,5 +1,11 @@
 # ReactMeals
 
+<div align="center">
+    <img src="https://github.com/Futila/ReactMeals/blob/master/src/.github/header.JPG" width="400px" />
+    <img src="https://github.com/Futila/ReactMeals/blob/master/src/.github/content.JPG" width="400px" />
+
+</div>
+
 ## 💻 Projeto
 
 This is a simulated food order application, where you can fetch some datas (the meals) and submit orders to a Backend (Firebase in this case, using the realtime database it provides) Server. There is a simple validation to the user input on the client before we submit it.
