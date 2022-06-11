@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 
 import classes from "./Checkout.module.css";
 
-const isEmpty = (value) => value.trim().length !== "";
+const isEmpty = (value) => value.trim() === "";
 const isFiveChars = (value) => value.trim().length === 5;
 
 const Checkout = (props) => {
@@ -47,6 +47,18 @@ const Checkout = (props) => {
     if (!formIsValid) {
       return;
     }
+
+    props.onConfirm({
+      name: enteredName,
+      street: enteredStreet,
+      city: enteredCity,
+      postalCode: enteredPostalCode,
+    });
+
+    nameInputRef.current.value = "";
+    streetInputRef.current.value = "";
+    postalCodeInputRef.current.value = "";
+    cityInputRef.current.value = "";
   };
 
   const nameControlClasses = `${classes.control} ${
@@ -75,7 +87,7 @@ const Checkout = (props) => {
       <div className={streetControlClasses}>
         <label htmlFor="street">Street</label>
         <input ref={streetInputRef} type="text" id="street" />
-        {!formInputsValidity.street && <p>Please enter a valid name</p>}
+        {!formInputsValidity.street && <p>Please enter a valid street</p>}
       </div>
       <div className={postalCodeControlClasses}>
         <label htmlFor="postal">Postal Code</label>
@@ -93,7 +105,9 @@ const Checkout = (props) => {
         <button type="button" onClick={props.onCancel}>
           Cancel
         </button>
-        <button className={classes.submit}>Confirm</button>
+        <button type="submit" className={classes.submit}>
+          Confirm
+        </button>
       </div>
     </form>
   );
